@@ -1,0 +1,217 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html,body{
+    height: 100%;
+}
+body{
+    min-height: 410px;
+    background: rgb(230, 230, 230);
+    font-family: Calibri, sans-serif;
+     white-space: nowrap; 
+}
+
+ /* container start */
+.title-bar{grid-area: title-bar;}
+.main{grid-area: main;}
+.memory{grid-area: memory;}
+.numbers{grid-area: numbers;}
+.right-side{grid-area: right-side;}
+.container{
+    display: grid;
+    height: 100%;
+    grid-template-columns:minmax(420px,auto) minmax(auto,320px);
+    grid-template-rows: auto 1fr auto minmax(auto, 420px);
+    grid-template-areas:
+        "title-bar title-bar"
+        "main      right-side"
+        "memory    right-side"
+        "numbers   right-side";
+}
+/* container end */
+
+/* right-side start */
+.right-side{
+    padding: 10px;
+    font-weight: bold;
+}
+.right-side :last-child{
+    margin: 10px 7px;
+}
+.his-btns>span{
+    padding: 2px 7px;
+}
+.his-btns>span:first-child{
+    border-bottom: 3px solid rgb(236, 140, 71);
+}
+/* right-side end */
+
+/* title-bar start */
+.title-bar{
+    display: flex;
+    align-items: center;
+}
+.title-bar :first-child{
+    cursor: default;
+    padding: 5px;
+    font-size: .8em;
+    flex-grow: 1;
+}
+.titlebar-btn{
+    cursor: pointer;
+    width: 45px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn-hover:hover{
+    background: rgb(207, 207, 207);
+}
+.close-hover:hover{
+    color: #fff;
+    background: rgb(233, 16, 35);
+}
+/* title-bar end */
+
+/* main start */
+.nav{
+    display: flex;
+    align-items: center;
+}
+.nav :nth-child(2){
+    font-weight: bold;
+}
+.nav>img{
+    width: 30px;
+    height: auto;
+}
+.nav>*{
+    padding: 5px;
+}
+.nav :last-child{
+    display: none;
+    margin-left: auto;
+}
+.result{
+    font-size: 6vh;
+    font-weight: bold;
+    text-align: right;
+    padding: 0 5px;
+    margin-top: 15px;
+}
+/* main end */
+
+/* memory start */
+.memory{
+    display: flex;
+    font-weight: bold;
+}
+.memory>*{
+    padding: 5px 15px;
+}
+.memory :first-child, .memory :last-child, .memory :nth-child(2){
+    color: #ccc7c7;
+}
+.memory :last-child{
+    display: none;
+}
+/* memory end */
+
+/* numbers start */
+.percent{grid-area: percent;}
+.ce{grid-area: ce;}
+.c{grid-area: c;}
+.delete{grid-area: delete;}
+.division{grid-area: division;}
+.radical{grid-area: radical;}
+.multiplication{grid-area: multiplication;}
+.num2x{grid-area: num2x;}
+.subtraction{grid-area: subtraction;}
+.power3{grid-area: power3;}
+.sum{grid-area: sum;}
+.num1x{grid-area: num1x;}
+.maxmin{grid-area: maxmin;}
+.dot{grid-area: dot;}
+.equal{grid-area: equal;}
+.num0{grid-area: num0;}
+.num1{grid-area: num1;}
+.num2{grid-area: num2;}
+.num3{grid-area: num3;}
+.num4{grid-area: num4;}
+.num5{grid-area: num5;}
+.num6{grid-area: num6;}
+.num7{grid-area: num7;}
+.num8{grid-area: num8;}
+.num9{grid-area: num9;}
+.numbers{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-areas:
+        "percent ce      c     delete division"
+        "radical num7    num8  num9   multiplication"
+        "num2x   num4    num5  num6   subtraction"
+        "power3  num1    num2  num3   sum"
+        "num1x   maxmin  num0  dot    equal";
+    grid-gap: 2px;
+    font-size: 1.7em;
+
+}
+.numbers>div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.numbers>div>img{
+    object-fit: scale-down;
+}
+.nums-bgcolor{
+    background: #fff;
+    font-weight: bold;
+}
+.maths-bgcolor{
+    background:rgb(240,240,240);
+}
+.numbers>div:hover{
+    background: rgb(230,230,230);
+}
+/* numbers end */
+
+
+@media only screen and (max-width: 1024px), screen and (max-height: 620px) {
+    .power3{display: none !important;}
+    .numbers{
+        grid-template-columns: repeat(4,1fr);
+        grid-template-rows: repeat(6,1fr);
+        grid-template-areas:
+            "percent radical num2x  num1x"
+            "ce      c       delete division"
+            "num7    num8    num9   multiplication"
+            "num4    num5    num6   subtraction"
+            "num1    num2    num3   sum"
+            "maxmin  num0    dot    equal";
+    }
+}
+
+@media only screen and (max-width:500px) {
+    .right-side{display: none;}
+    .container{
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr auto minmax(auto, 420px);
+        grid-template-areas:
+            "title-bar"
+            "main"
+            "memory"
+            "numbers";
+    }
+    .nav :last-child{
+        display: inline-block;
+    }
+    .memory :last-child{
+        display: flex;
+        align-items: flex-start;
+    }
+}
